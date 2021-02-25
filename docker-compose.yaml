@@ -1,0 +1,29 @@
+version: "3.8"
+
+services: 
+  ubuntu_packages:
+    build: ./
+    image: debmirror:latest
+    environment: 
+      - DEST=/mnt/debmirror/
+      - HOST=archive.ubuntu.com
+      - ROOT=ubuntu
+      - DIST=focal
+      - SECTION=main,restricted,universe,multiverse
+      - ARCH=amd64
+      - METHOD=rsync
+    volumes:
+      - "/mnt/c/debmirror/ubuntu:/mnt/debmirror"
+  docker_packages:
+    build: ./
+    image: debmirror:latest
+    environment: 
+      - DEST=/mnt/debmirror/
+      - HOST=download.docker.com
+      - ROOT=linux/ubuntu
+      - DIST=bionic,focal,groovy
+      - SECTION=stable
+      - ARCH=amd64
+      - METHOD=http
+    volumes:
+      - "/mnt/c/debmirror/docker:/mnt/debmirror"
