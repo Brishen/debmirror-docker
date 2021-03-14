@@ -10,7 +10,7 @@ services:
       - ROOT=ubuntu
       - DIST=focal
       - SECTION=main,restricted,universe,multiverse
-      - ARCH=amd64
+      - ARCH=i386,amd64
       - METHOD=rsync
     volumes:
       - "/mnt/c/debmirror/ubuntu:/mnt/debmirror"
@@ -21,7 +21,7 @@ services:
       - DEST=/mnt/debmirror/
       - HOST=download.docker.com
       - ROOT=linux/ubuntu
-      - DIST=bionic,focal,groovy
+      - DIST=focal
       - SECTION=stable
       - ARCH=amd64
       - METHOD=http
